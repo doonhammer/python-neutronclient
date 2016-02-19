@@ -410,6 +410,8 @@ class Client(ClientBase):
     flavor_profile_binding_path = flavor_path + service_profile_path
     availability_zones_path = "/availability_zones"
     auto_allocated_topology_path = "/auto-allocated-topology/%s"
+    sfi_paths = "/sfi"
+    sfi_path = "/sfi/%s"
 
     # API has no way to report plurals, so we have to hard code them
     EXTED_PLURALS = {'routers': 'router',
@@ -1700,6 +1702,33 @@ class Client(ClientBase):
         return self.get(
             self.auto_allocated_topology_path % tenant_id,
             params=_params)
+        
+    @APIParamsCall
+    def list_sfi(self, retrieve_all=True, **_params):
+        """Fetches a list of all services inserted for a tenant."""
+        return self.list('sfi', self.sfis_path, retrieve_all,
+                         **_params)
+ 
+    @APIParamsCall
+    def show_sfi(self, sfi, **_params):
+        """Fetches information of a certain service inserted."""
+        return self.get(self.sfi_path % (sfi), params=_params)
+ 
+    @APIParamsCall
+    def create_sfi(self, body=None):
+        """Creates a new service inserted."""
+        return self.post(self.sfis_path, body=body)
+ 
+    @APIParamsCall
+    def update_sfi(self, sfi, body=None):
+        """Updates a service entry."""
+        return self.put(self.sfi_path % (sfi), body=body)
+ 
+    @APIParamsCall
+    def delete_sfi(self, sfi):
+        """Deletes the specified service insertion."""
+        return self.delete(self.sfi_path % (sfi))
+
 
     def __init__(self, **kwargs):
         """Initialize a new client for the Neutron v2.0 API."""

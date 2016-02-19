@@ -82,7 +82,7 @@ from neutronclient.neutron.v2_0.vpn import ipsec_site_connection
 from neutronclient.neutron.v2_0.vpn import ipsecpolicy
 from neutronclient.neutron.v2_0.vpn import vpnservice
 from neutronclient.version import __version__
-
+from neutronclient.neutron.v2_0 import sfi
 
 VERSION = '2.0'
 NEUTRON_API_VERSION = '2.0'
@@ -395,6 +395,11 @@ COMMAND_V2 = {
     'availability-zone-list': availability_zone.ListAvailabilityZone,
     'auto-allocated-topology-show': (
         auto_allocated_topology.ShowAutoAllocatedTopology),
+    'sfi-create': sfi.CreateSFI,
+    'sfi-delete': sfi.DeleteSFI,
+    'sfi-update': sfi.UpdateSFI,
+    'sfi-show': sfi.ShowSFI,
+    'sfi-list': sfi.ListSFI,
 }
 
 COMMANDS = {'2.0': COMMAND_V2}

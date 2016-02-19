@@ -7,12 +7,12 @@ import logging
  
 from neutronclient.common import exceptions
 from neutronclient.neutron import v2_0 as neutronV20
-from neutronclient.openstack.common.gettextutils import _
+#from neutronclient.openstack.common.gettextutils import _
  
 class ListSFI(neutronV20.ListCommand):
     # Writing a class to list all the data stored by your Sfi
     # extensions. This will call the get_sfis method of your
-    # neutron plugin
+    # neutron plugin111111
  
     resource = 'sfi'
     # This will be explained later in this post

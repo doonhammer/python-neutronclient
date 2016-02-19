@@ -449,6 +449,7 @@ class Client(ClientBase):
                      'bandwidth_limit_rules': 'bandwidth_limit_rule',
                      'rule_types': 'rule_type',
                      'flavors': 'flavor',
+                     'sfis': 'sfi',
                      }
 
     @APIParamsCall
@@ -1704,9 +1705,9 @@ class Client(ClientBase):
             params=_params)
         
     @APIParamsCall
-    def list_sfi(self, retrieve_all=True, **_params):
+    def list_sfis(self, retrieve_all=True, **_params):
         """Fetches a list of all services inserted for a tenant."""
-        return self.list('sfi', self.sfis_path, retrieve_all,
+        return self.list('sfis', self.sfis_path, retrieve_all,
                          **_params)
  
     @APIParamsCall

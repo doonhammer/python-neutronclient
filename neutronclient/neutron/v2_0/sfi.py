@@ -53,20 +53,20 @@ class CreateSFI(neutronV20.CreateCommand):
  
         parser.add_argument(
             'name', metavar='NAME',
-            help=_("Name of the sfi"))
+            help=("Name of the sfi"))
  
         parser.add_argument(
             '--priority', dest='priority',
-            help=_("Assign priority to this sfi"))
+            help=("Assign priority to this sfi"))
  
         parser.add_argument(
             '--credential', dest='credential',
-            help=_("Specify the credential to this sfi"))
+            help=("Specify the credential to this sfi"))
  
         """ This is just an example for retrieving boolean values
         parser.add_argument(
             'admin', action='store_true',
-            help=_("Is admin is specified, it will store True,"
+            help=("Is admin is specified, it will store True,"
                    " else False"))
         """
  

@@ -410,8 +410,8 @@ class Client(ClientBase):
     flavor_profile_binding_path = flavor_path + service_profile_path
     availability_zones_path = "/availability_zones"
     auto_allocated_topology_path = "/auto-allocated-topology/%s"
-    sfi_paths = "/sfi"
-    sfi_path = "/sfi/%s"
+    sfis_path = "/sfis"
+    sfi_path = "/sfis/%s"
 
     # API has no way to report plurals, so we have to hard code them
     EXTED_PLURALS = {'routers': 'router',

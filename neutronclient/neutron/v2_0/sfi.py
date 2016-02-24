@@ -56,13 +56,25 @@ class CreateSFI(neutronV20.CreateCommand):
             help=("Name of the sfi"))
  
         parser.add_argument(
-            '--priority', dest='priority',
-            help=("Assign priority to this sfi"))
+            '--network_id', dest='network_id',
+            help=("Network to attach service too"))
  
         parser.add_argument(
-            '--credential', dest='credential',
-            help=("Specify the credential to this sfi"))
- 
+            '--in_port_id', dest='in_port_id',
+            help=("Input (untrusted) port of service"))
+
+        parser.add_argument(
+            '--out_port_id', dest='out_port_id',
+            help=("Output (trusted) port of service")) 
+
+        parser.add_argument(
+            '--firewall_id', dest='firewall_id',
+            help=("Firewall (Service) to insert"))
+
+        parser.add_argument(
+            '--application_id', dest='application_id',
+            help=("Application to insert service in front of"))
+
         """ This is just an example for retrieving boolean values
         parser.add_argument(
             'admin', action='store_true',
@@ -84,8 +96,11 @@ class CreateSFI(neutronV20.CreateCommand):
         # and forward this data to the next step in neutronclient
         body = {'sfi': {
                     'name': parsed_args.name,
-                    'priority': parsed_args.priority,
-                    'credential': parsed_args.credential,
+                    'network_id': parsed_args.network_id,
+                    'in_port_id': parsed_args.in_port_id,
+                    'out_port_id': parsed_args.out_port_id,
+                    'firewall_id': parsed_args.firewall_id,
+                    'application_id': parsed_args.application_id,
                     # for boolean types, it's no different
                     # 'admin': parsed_args.admin,
                }}

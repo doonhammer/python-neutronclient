@@ -17,7 +17,7 @@ class ListSFI(neutronV20.ListCommand):
     resource = 'sfi'
     # This will be explained later in this post
     log = logging.getLogger(__name__ + '.ListSFI')
-    list_columns = [ 'name', 'priority', 'credential' ]
+    list_columns = [ 'name', 'network_id', 'firewall_id', 'application_id','ip_port_id','out_port_id' ]
     # list_columns represents the column you wish to display when a
     # user uses "neutron sfi-list". Not all attributes of an
     # extension need be displayed

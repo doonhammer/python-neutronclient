@@ -75,6 +75,10 @@ class CreateSFI(neutronV20.CreateCommand):
             '--application_id', dest='application_id',
             help=("Application to insert service in front of"))
 
+        parser.add_argument(
+            '--tenant_id', dest='tenant_id',
+            help=("Tenant ID to work on"))
+
         """ This is just an example for retrieving boolean values
         parser.add_argument(
             'admin', action='store_true',

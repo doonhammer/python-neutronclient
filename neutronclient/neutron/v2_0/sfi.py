@@ -12,12 +12,13 @@ from neutronclient.neutron import v2_0 as neutronV20
 class ListSFI(neutronV20.ListCommand):
     # Writing a class to list all the data stored by your Sfi
     # extensions. This will call the get_sfis method of your
-    # neutron plugin111111
+    # neutron plugin
  
     resource = 'sfi'
     # This will be explained later in this post
     log = logging.getLogger(__name__ + '.ListSFI')
-    list_columns = [ 'name', 'network_id', 'firewall_id', 'application_id','ip_port_id','out_port_id' ]
+    list_columns = ['id','name', 'network_id', 'app_port_id','in_port_id','out_port_id' ]
+    #
     # list_columns represents the column you wish to display when a
     # user uses "neutron sfi-list". Not all attributes of an
     # extension need be displayed
@@ -60,20 +61,16 @@ class CreateSFI(neutronV20.CreateCommand):
             help=("Network to attach service too"))
  
         parser.add_argument(
+            '--app_port_id', dest='app_port_id',
+            help=("The port id of the application to insert service in front of"))
+
+        parser.add_argument(
             '--in_port_id', dest='in_port_id',
             help=("Input (untrusted) port of service"))
 
         parser.add_argument(
             '--out_port_id', dest='out_port_id',
             help=("Output (trusted) port of service")) 
-
-        parser.add_argument(
-            '--firewall_id', dest='firewall_id',
-            help=("Firewall (Service) to insert"))
-
-        parser.add_argument(
-            '--application_id', dest='application_id',
-            help=("Application to insert service in front of"))
 
         """ This is just an example for retrieving boolean values
         parser.add_argument(
@@ -97,12 +94,9 @@ class CreateSFI(neutronV20.CreateCommand):
         body = {'sfi': {
                     'name': parsed_args.name,
                     'network_id': parsed_args.network_id,
+                    'app_port_id': parsed_args.app_port_id,
                     'in_port_id': parsed_args.in_port_id,
-                    'out_port_id': parsed_args.out_port_id,
-                    'firewall_id': parsed_args.firewall_id,
-                    'application_id': parsed_args.application_id,
-                    # for boolean types, it's no different
-                    # 'admin': parsed_args.admin,
+                    'out_port_id': parsed_args.out_port_id
                }}
         # NOTE: parsed_args gets it's data members called priority and
         # credential from the dest that we specify in add_argument. Not specifying
